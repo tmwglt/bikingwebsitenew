@@ -1,0 +1,257 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap');
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden; /* Prevent scrolling */
+  font-family: 'Work Sans', sans-serif;
+  background-color: #000; /* Set background color to black to avoid grey background */
+}
+
+/* Header, nav, and logo styles */
+header {
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  padding: 0.25rem 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #000; /* Thin black line to divide the top bar */
+  z-index: 10;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #000;
+  text-decoration: none;
+  font-family: 'Raleway', sans-serif;
+}
+
+nav {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+}
+
+nav ul {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li {
+  margin: 0 0.5rem;
+}
+
+nav a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color 0.3s;
+  padding: 0.5rem 1rem;
+}
+
+nav a:hover {
+  color: #ccc;
+}
+
+nav a.active {
+  color: #F9A825;
+}
+
+.time-of-day {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-left: 1rem;
+}
+
+.hamburger-menu {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.film-grain {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  background: #fff;
+  opacity: 0.2;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.1) 0,
+    rgba(255, 255, 255, 0.1) 1px,
+    rgba(0, 0, 0, 0.1) 1px,
+    rgba(0, 0, 0, 0.1) 2px
+  );
+  animation: static-noise 1s steps(10) infinite;
+}
+
+@keyframes static-noise {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+.marquee {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: transparent;
+  overflow: hidden;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+.marquee p {
+  display: inline-block;
+  padding-left: 100%;
+  animation: marquee 120s linear infinite;
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.rotating-messages {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  overflow: hidden;
+}
+
+.message {
+  position: relative;
+  font-size: 4rem; /* Increased font size */
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+  text-align: center;
+  opacity: 0;
+  font-family: 'Raleway', sans-serif; /* New font family */
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+}
+
+.message::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  transform: translateY(-100%);
+  transition: transform 2s;
+  z-index: 1;
+}
+
+.message.active::before {
+  transform: translateY(0);
+}
+
+.message.leave::before {
+  transform: translateY(100%);
+}
+
+.message.active {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .logo-container {
+    margin-bottom: 0.5rem;
+  }
+
+  nav {
+    justify-content: flex-start;
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav ul li {
+    margin: 0;
+    border-bottom: 1px solid #000; /* Add a bottom border for each list item */
+  }
+
+  nav ul li:last-child {
+    border-bottom: none; /* Remove the last bottom border */
+  }
+
+  nav a {
+    padding: 0.5rem 0;
+  }
+
+  .hamburger-menu {
+    display: block;
+  }
+}
