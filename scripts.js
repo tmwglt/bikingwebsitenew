@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   const images = [
-    'images/image1.jpg',
+    'images/image1.JPG',
     'images/image2.jpg',
     'images/image3.jpg',
     // Add more image paths as needed
