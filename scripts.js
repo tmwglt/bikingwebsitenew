@@ -17,16 +17,22 @@ document.addEventListener('DOMContentLoaded', () => {
     navUl.classList.toggle('active');
   });
 
-  const video = document.querySelector('video');
-  const sources = Array.from(video.querySelectorAll('source'));
-  let currentSource = 0;
+  const images = [
+    'images/image1.jpg',
+    'images/image2.jpg',
+    'images/image3.jpg',
+    // Add more image paths as needed
+  ];
 
-  video.addEventListener('ended', () => {
-    currentSource = (currentSource + 1) % sources.length;
-    video.src = sources[currentSource].src;
-    video.load();
-    video.play();
-  });
+  let currentImageIndex = 0;
+  const slideshowImage = document.getElementById('slideshow-image');
+
+  function changeImage() {
+    currentImageIndex = (currentImageIndex + 1) % images.length;
+    slideshowImage.src = images[currentImageIndex];
+  }
+
+  setInterval(changeImage, 5000); // Change image every 5 seconds
 
   function updateTime() {
     const timeOfDay = document.querySelector('.time-of-day');
@@ -40,11 +46,13 @@ document.addEventListener('DOMContentLoaded', () => {
   setInterval(updateTime, 60 * 1000); // Update every minute
 
   const messages = document.querySelectorAll('.message');
+  const videoContainer = document.querySelector('.image-container');
   let activeMessage = 0;
 
   function randomPosition(element) {
-    const randomX = Math.random() * (window.innerWidth - element.clientWidth);
-    const randomY = Math.random() * (window.innerHeight - element.clientHeight);
+    const videoRect = videoContainer.getBoundingClientRect();
+    const randomX = Math.random() * (videoRect.width - element.clientWidth);
+    const randomY = Math.random() * (videoRect.height - element.clientHeight);
     element.style.left = `${randomX}px`;
     element.style.top = `${randomY}px`;
   }
@@ -62,9 +70,9 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
       active.classList.add('leave');
       activeMessage = (activeMessage + 1) % messages.length;
-    }, 6000);
+    }, 5000); // Show each message for 5 seconds
   }
 
   showNextMessage();
-  setInterval(showNextMessage, 8000);
+  setInterval(showNextMessage, 8000); // Rotate messages every 8 seconds
 });
