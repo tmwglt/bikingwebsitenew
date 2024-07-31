@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
     slideshowImage.src = images[currentImageIndex];
   }
 
-  setInterval(changeImage, 5000); // Change image every 5 seconds
+  setInterval(changeImage, 25000); // Change image every 5 seconds
 
   function updateTime() {
     const timeOfDay = document.querySelector('.time-of-day');
