@@ -18,24 +18,24 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   const images = [
-    'images/image1.JPG',
-    'images/image2.JPG',
+    'images/image1.jpeg',
+    'images/image2.jpeg',
     'images/image3.jpeg',
     'images/image4.jpeg',
-    'images/image5.JPG',
-    'images/image6.JPG',
+    'images/image5.jpeg',
+    'images/image6.jpeg',
     'images/image7.jpeg',
     'images/image9.jpeg',
     'images/image10.jpeg',
     'images/image11.jpeg',
     'images/image12.jpeg',
-    'images/image13.JPG',
+    'images/image13.jpeg',
     'images/image14.jpeg',
     'images/image15.jpeg',
-    'images/image16.JPG',
-    'images/image17.JPG',
-    'images/image18.JPG',
-    'images/image19.JPG',
+    'images/image16.jpeg',
+    'images/image17.jpeg',
+    'images/image18.jpeg',
+    'images/image19.jpeg',
     // Add more image paths as needed
   ];
 
